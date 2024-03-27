@@ -37,6 +37,7 @@ jobs:
           make
           git
           mingw-w64-x86_64-gcc
+          mingw-w64-x86_64-clang
           pkg-config
           yasm
           
