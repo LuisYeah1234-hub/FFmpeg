@@ -23,8 +23,6 @@ jobs:
 
     - name: Build FFmpeg
       run: |
-        # Replace this with your FFmpeg build commands
-        # Below is just a sample
         ./configure --enable-shared --disable-static --prefix=/build
         make
 
