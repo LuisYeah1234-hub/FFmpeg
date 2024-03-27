@@ -29,8 +29,6 @@ jobs:
         update: true
         # After installation and/or update, install additional packages through pacman
         install: nasm
-        # After installation and/or update, install additional packages through pacboy
-        pacboy: none
         # Retrieve and extract base installation from upstream GitHub Releases
         release: true
         # Where to install MSYS2
