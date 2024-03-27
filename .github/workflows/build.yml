@@ -1,0 +1,35 @@
+name: Build FFmpeg Shared Libraries for Windows
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Cygwin
+      uses: mattn/cygwin-action@v2
+      with:
+        packages: cmake make gcc-g++ pkg-config
+
+    - name: Build FFmpeg
+      run: |
+        # Replace this with your FFmpeg build commands
+        # Below is just a sample
+        ./configure --enable-shared --disable-static --prefix=/build
+        make
+
+    - name: Upload FFmpeg artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: ffmpeg-shared-libraries
+        path: /build
