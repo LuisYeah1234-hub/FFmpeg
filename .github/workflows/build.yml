@@ -26,7 +26,7 @@ jobs:
         # Default value for MSYS2_PATH_TYPE environment variable: strict, inherit or minimal
         path-type: minimal
         # Update MSYS2 installation through pacman
-        update: none
+        update: true
         # After installation and/or update, install additional packages through pacman
         install: nasm
         # After installation and/or update, install additional packages through pacboy
