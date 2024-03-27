@@ -42,7 +42,7 @@ jobs:
 
     - name: Build FFmpeg Shared Libraries
       run: |
-        ./configure --toolchain=msvc --enable-shared --prefix=${GITHUB_WORKSPACE}/build
+        ./configure --toolchain=msvc --enable-shared
         make
 
     - name: Upload Built FFmpeg Shared Libraries as an artifact
