@@ -35,8 +35,9 @@ jobs:
           nasm
           diffutils
           make
+          git
           mingw-w64-x86_64-gcc
-          mingw-w64-i686-gcc
+          pkg-config
         # Retrieve and extract base installation from upstream GitHub Releases
         release: true
         # Where to install MSYS2
