@@ -41,7 +41,7 @@ jobs:
 
     - name: Build FFmpeg Shared Libraries
       run: |
-        ./configure --enable-shared --disable-static --prefix=/build
+        ./configure --target-os=mingw32 --enable-shared --disable-static --extra-cflags=-mno-cygwin --extra-libs=-mno-cygwin
         make
 
     - name: Upload Built FFmpeg Shared Libraries as an artifact
