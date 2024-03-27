@@ -3,10 +3,10 @@ name: Build FFmpeg Shared Libraries for Windows
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
