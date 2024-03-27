@@ -13,7 +13,7 @@ jobs:
     runs-on: windows-latest
     defaults:
         run:
-          shell: msys2 {0}
+          shell: msys2 {0} -use-full-path
 
     steps:
     - name: Checkout repository
@@ -38,6 +38,8 @@ jobs:
           git
           mingw-w64-x86_64-gcc
           pkg-config
+          yasm
+          
         # Retrieve and extract base installation from upstream GitHub Releases
         release: true
         # Where to install MSYS2
