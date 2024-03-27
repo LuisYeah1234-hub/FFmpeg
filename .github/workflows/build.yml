@@ -33,7 +33,7 @@ jobs:
         # Should the setup.ini file signature be checked?
         check-sig: true
         # Absolute paths of extra public key files (RFC4880 format), separated by whitespace
-        pubkeys: ${{ github.workspace }}\tests\repo\key.pub
+        pubkeys: none
         # Download site URLs separated by whitespace
         site: https://sourceware.mirror.garr.it/cygwin/
         # Should Cygwin's bin directory be added to the system PATH?
@@ -41,12 +41,12 @@ jobs:
 
     - name: Build FFmpeg Shared Libraries
       run: |
-        cd ${GITHUB_WORKSPACE}
         ./configure --target-os=mingw32 --enable-shared --disable-static --extra-cflags=-mno-cygwin --extra-libs=-mno-cygwin --prefix=${GITHUB_WORKSPACE}\build
+        cd ${GITHUB_WORKSPACE}
         make
 
     - name: Upload Built FFmpeg Shared Libraries as an artifact
       uses: actions/upload-artifact@v2
       with:
         name: ffmpeg-shared-libraries
-        path: /build
+        path: ${{ github.workspace }}\build
