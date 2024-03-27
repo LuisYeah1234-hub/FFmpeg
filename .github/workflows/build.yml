@@ -41,8 +41,11 @@ jobs:
 
     - name: Build FFmpeg Shared Libraries
       run: |
+        C:\cygwin\bin\bash.exe apt-cyg install dos2unix
+        C:\cygwin\bin\bash.exe dos2unix configure
+        C:\cygwin\bin\bash.exe dos2unix Makefile
         C:\cygwin\bin\bash.exe ./configure --target-os=mingw32 --enable-shared --disable-static --extra-cflags=-mno-cygwin --extra-libs=-mno-cygwin --prefix=${GITHUB_WORKSPACE}\build
-        C:\cygwin\bin\bash.exe make
+        make
 
     - name: Upload Built FFmpeg Shared Libraries as an artifact
       uses: actions/upload-artifact@v2
