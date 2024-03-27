@@ -16,17 +16,35 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install Cygwin
-      uses: mattn/cygwin-action@v2
+    - name: Install Cygwin Action
+      # You may pin to the exact commit or the version.
+      # uses: cygwin/cygwin-install-action@006ad0b0946ca6d0a3ea2d4437677fa767392401
+      uses: cygwin/cygwin-install-action@v4
       with:
-        packages: cmake make gcc-g++ pkg-config
+        # Platform [x86, x86_64]
+        platform: x86_64
+        # Packages to install
+        packages: |
+          gcc-mingw-core 
+          mingw-runtime
+          mingw-zlib
+        # Installation directory
+        install-dir: C:\cygwin
+        # Should the setup.ini file signature be checked?
+        check-sig: true
+        # Absolute paths of extra public key files (RFC4880 format), separated by whitespace
+        pubkeys: ${{ github.workspace }}\tests\repo\key.pub
+        # Download site URLs separated by whitespace
+        site: https://sourceware.mirror.garr.it/cygwin/
+        # Should Cygwin's bin directory be added to the system PATH?
+        add-to-path: true
 
-    - name: Build FFmpeg
+    - name: Build FFmpeg Shared Libraries
       run: |
         ./configure --enable-shared --disable-static --prefix=/build
         make
 
-    - name: Upload FFmpeg artifacts
+    - name: Upload Built FFmpeg Shared Libraries as an artifact
       uses: actions/upload-artifact@v2
       with:
         name: ffmpeg-shared-libraries
