@@ -50,7 +50,7 @@ jobs:
 
     - name: Build FFmpeg Shared Libraries
       run: |
-        ./configure --toolchain=msvc --enable-shared
+        ./configure --toolchain=msvc --enable-shared --enable-cross-compile
         make
 
     - name: Upload Built FFmpeg Shared Libraries as an artifact
