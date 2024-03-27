@@ -41,9 +41,8 @@ jobs:
 
     - name: Build FFmpeg Shared Libraries
       run: |
-        echo ${GITHUB_WORKSPACE}
-        ./configure --target-os=mingw32 --enable-shared --disable-static --extra-cflags=-mno-cygwin --extra-libs=-mno-cygwin --prefix=${GITHUB_WORKSPACE}\build
-        make
+        C:\cygwin\bin\bash.exe ./configure --target-os=mingw32 --enable-shared --disable-static --extra-cflags=-mno-cygwin --extra-libs=-mno-cygwin --prefix=${GITHUB_WORKSPACE}\build
+        C:\cygwin\bin\bash.exe make
 
     - name: Upload Built FFmpeg Shared Libraries as an artifact
       uses: actions/upload-artifact@v2
